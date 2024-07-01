@@ -61,8 +61,6 @@ public class DBCP2Source {
 
     public static Connection getConnection() throws SQLException {
         Connection connection = dataSource.getConnection();
-
-        logger.info("-----------------------");
         logger.info("+ Num of Idle Connections:: " + dataSource.getNumIdle());
         logger.info("+ Num of Busy Connections: " + dataSource.getNumActive());
         return connection;
