@@ -15,6 +15,7 @@ public class UserController {
     private UserService userService;
 
     public UserController(UserService userService) {
+
         this.userService = userService;
     }
     @PostMapping
@@ -51,7 +52,7 @@ public class UserController {
         return userService.searchByAddr(addr);
     }
     @GetMapping("/{id}")
-    public User findById(@PathVariable int id){
+    public User findById(@PathVariable int id) throws InterruptedException {
         return userService.searchById(id);
     }
     @GetMapping("/all")

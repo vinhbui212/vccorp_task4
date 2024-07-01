@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
+import thuctap.task4.config.DataSourceConfig;
 import thuctap.task4.model.User;
 
 import javax.sql.DataSource;
@@ -45,6 +46,7 @@ public class DAOImpl extends JdbcDaoSupport implements DAO {
 
         String sql = "UPDATE user SET name = ?, age = ?, address = ? WHERE id = ?";
         getJdbcTemplate().update(sql, user.getName(), user.getAge(), user.getAddress(), id);
+
         System.out.println("User updated successfully.");
     }
 
@@ -68,9 +70,10 @@ public class DAOImpl extends JdbcDaoSupport implements DAO {
     }
 
     @Override
-    public User searchById(int id) {
+    public User searchById(int id) throws InterruptedException {
         String sql = "SELECT * FROM user WHERE id = ?";
         User user = getJdbcTemplate().queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<>(User.class));
+        Thread.sleep(2000);
         return user;
     }
 

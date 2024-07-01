@@ -9,7 +9,7 @@ public interface DAO {
     void updateUser(int id,User user) throws  Exception;
     void deleteUser(int id) throws Exception;
     List<User> searchByName(String name);
-    User searchById(int id);
+    User searchById(int id) throws InterruptedException;
     List<User> searchByAddress(String address);
     List<User> arrangeByName();
 }

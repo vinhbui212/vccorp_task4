@@ -12,6 +12,7 @@ import java.util.List;
 public class UserService {
     private DAO dao;
 
+
     public void addNewUser(User user) throws Exception {
         dao.insertUser(user);
 
@@ -32,7 +33,7 @@ public class UserService {
             return users;
     }
 
-    public User searchById(int id){
+    public User searchById(int id) throws InterruptedException {
         User user=dao.searchById(id);
         return user;
     }
